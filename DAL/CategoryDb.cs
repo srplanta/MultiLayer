@@ -10,7 +10,6 @@ namespace DAL
     public class CategoryDb
     {
         private ApplicationDbContext dbContext;
-
         public CategoryDb(ApplicationDbContext _dbContext)
         {
             dbContext = _dbContext;
