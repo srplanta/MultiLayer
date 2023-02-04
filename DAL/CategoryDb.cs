@@ -9,7 +9,13 @@ namespace DAL
 {
     public class CategoryDb
     {
-        private ApplicationDbContext dbContext = new ApplicationDbContext();
+        private ApplicationDbContext dbContext;
+
+        public CategoryDb(ApplicationDbContext _dbContext)
+        {
+            dbContext = _dbContext;
+        }
+
         public IEnumerable<Category> GetAll()
         {   // IEnumerable cannot be manipulated by the user
             // List can be manipulated

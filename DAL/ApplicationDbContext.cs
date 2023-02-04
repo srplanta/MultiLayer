@@ -15,11 +15,17 @@ namespace DAL
 {
     public class ApplicationDbContext : DbContext   //DbContext requires Microsoft.EntityFrameworkCore
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(@"server=DESKTOP-MAE99H0; database=MultiLayerDb; trusted_connection=true;encrypt=false;TrustServerCertificate=true;");
+
         }
+
+        // Below responsibility is assigned to Program.cs builder.Services.AddDbContext<>
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    base.OnConfiguring(optionsBuilder);
+        //    optionsBuilder.UseSqlServer(@"server=DESKTOP-MAE99H0; database=MultiLayerDb; trusted_connection=true;encrypt=false;TrustServerCertificate=true;");
+        //}
 
         //Add reference of each model class from BOL project
         public DbSet<Category> Category { get; set; }
