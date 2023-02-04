@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
+    //Polymorphism  => OverLoading & OverRiding
+    //              => OverLoading  => Same Functions with different parameters
+    //              => OverRiding
     public interface ICategoryDb
     {
+        //Interfaces provide Abstraction => code implementation hides
         public IEnumerable<Category> GetAll();
         public Category GetById(int id);
         public bool Insert(Category category);
