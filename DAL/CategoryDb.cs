@@ -1,4 +1,5 @@
 ﻿using BOL;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,19 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class CategoryDb
+    public interface ICategoryDb
+    {
+        public IEnumerable<Category> GetAll();
+        public Category GetById(int id);
+        public bool Insert(Category category);
+        public bool Update(Category category);
+        public bool Delete(int id);
+    }
+    //*****************************************************************************
+    //********************* ICATEGORY INTERFACE ENDS ******************************
+    //*****************************************************************************
+
+    public class CategoryDb : ICategoryDb
     {
         private ApplicationDbContext dbContext;
         public CategoryDb(ApplicationDbContext _dbContext)
@@ -39,7 +52,7 @@ namespace DAL
             dbContext.SaveChanges();
             return true;
         }
-        
+
         public bool Delete(int id)
         {
             dbContext.Category.Remove(dbContext.Category.Find(id));
