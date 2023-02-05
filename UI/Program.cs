@@ -6,12 +6,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// ************************************************************
+// ******** FOLLOWING SERVICES ARE CUSTOM REGISTERED **********
+// ************************************************************
 //builder.Services.AddScoped<ICategoryDb, CategoryDb>();
 builder.Services.AddTransient<ICategoryDb, CategoryDb>();
 builder.Services.AddTransient<ICategoryBs, CategoryBs>();
-builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     @"server=DESKTOP-MAE99H0; database=MultiLayerDb; trusted_connection=true;encrypt=false;TrustServerCertificate=true;"
 ));
+
 
 var app = builder.Build();
 
