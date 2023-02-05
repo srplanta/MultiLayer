@@ -14,7 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<ICategoryDb, CategoryDb>();
 builder.Services.AddTransient<ICategoryBs, CategoryBs>();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
-    @"server=DESKTOP-MAE99H0; database=MultiLayerDb; trusted_connection=true;encrypt=false;TrustServerCertificate=true;"
+    @"server=DESKTOP-MAE99H0; database=MultiLayerDb; trusted_connection=true; encrypt=false; TrustServerCertificate=true;"
 ));
 
 
