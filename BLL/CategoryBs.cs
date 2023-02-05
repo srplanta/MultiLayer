@@ -10,7 +10,12 @@ namespace BLL
 {
     public class CategoryBs
     {
-        CategoryDb CategoryDb = new CategoryDb();
+        private readonly CategoryDb CategoryDb;
+
+        public CategoryBs(CategoryDb categoryDb)
+        {
+            CategoryDb = categoryDb;
+        }
 
         public IEnumerable<Category> GetAll()
         {
