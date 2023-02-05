@@ -8,40 +8,52 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class CategoryBs
+    public interface ICategoryBs
     {
-        private readonly CategoryDb CategoryDb;
+        public IEnumerable<Category> GetAll();
+        public Category GetById(int id);
+        public bool Insert(Category category);
+        public bool Delete(int id);
+        public bool Update(Category category);
+    }
+    //*****************************************************************************
+    //********************* ICATEGORY INTERFACE ENDS ******************************
+    //*****************************************************************************
 
-        public CategoryBs(CategoryDb categoryDb)
+    public class CategoryBs : ICategoryBs
+    {
+        private readonly ICategoryDb ICategoryDb;
+
+        public CategoryBs(ICategoryDb iCategoryDb)
         {
-            CategoryDb = categoryDb;
+            ICategoryDb = iCategoryDb;
         }
 
         public IEnumerable<Category> GetAll()
         {
-            return CategoryDb.GetAll();
+            return ICategoryDb.GetAll();
         }
 
         public Category GetById(int id)
         {
-            return CategoryDb.GetById(id);
+            return ICategoryDb.GetById(id);
         }
 
         public bool Insert(Category category)
         {
-            return CategoryDb.Insert(category);
+            return ICategoryDb.Insert(category);
             //return true; CategoryDb.Insert already returns true
         }
 
         public bool Delete(int id)
         {
-            return CategoryDb.Delete(id);
+            return ICategoryDb.Delete(id);
             //return true; CategoryDb.Delete already returns true
         }
 
         public bool Update(Category category)
         {
-            return CategoryDb.Update(category);
+            return ICategoryDb.Update(category);
             //return true; CategoryDb.Update already returns true
         }
     }
